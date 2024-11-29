@@ -27,7 +27,8 @@ jobs:
 
       - name: Run scan with ODC
         run: |
-          dependency-check/bin/dependency-check.sh --project "bitcoin" --scan . > ODC-report
+	  export JAVA_OPTS="-Xmx2G"
+          dependency-check/bin/dependency-check.sh --project "bitcoin" --scan . --format HTML --out .> ODC-report
 
       - name: Archive production artifacts
         uses: actions/upload-artifact@v3
